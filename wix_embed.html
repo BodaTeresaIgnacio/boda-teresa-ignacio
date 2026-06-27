@@ -1102,6 +1102,157 @@
       }
     }
 
+
+    /* Ajustes nueva versión móvil: orden, menú, tipografía y regalos */
+    body, button, input, select, textarea {
+      font-family: "ISOCPEUR", "ISOCP", "Aptos Narrow", "Arial Narrow", "HelveticaNeue-CondensedBold", "Roboto Condensed", sans-serif !important;
+    }
+
+    .gift-names {
+      margin: 10px 0 0 !important;
+      color: var(--muted) !important;
+      font-size: 11px !important;
+      line-height: 1.45 !important;
+      letter-spacing: .04em !important;
+      text-transform: none !important;
+    }
+
+    @media (max-width: 760px) {
+      .site { overflow: visible !important; }
+      body { font-family: "ISOCPEUR", "ISOCP", "Aptos Narrow", "Arial Narrow", "HelveticaNeue-CondensedBold", "Roboto Condensed", sans-serif !important; }
+
+      .topbar {
+        min-height: 86px !important;
+        display: grid !important;
+        grid-template-columns: 86px 1fr 58px !important;
+        align-items: center !important;
+        padding: 12px 24px !important;
+      }
+
+      .brand {
+        grid-column: 1 / 3 !important;
+        display: contents !important;
+      }
+
+      .brand-mark {
+        grid-column: 1 !important;
+        justify-self: start !important;
+        min-width: 78px !important;
+        height: 52px !important;
+        font-size: 22px !important;
+        border-radius: 999px !important;
+      }
+
+      .brand > span:not(.brand-mark) {
+        position: absolute !important;
+        left: 50% !important;
+        top: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        width: max-content !important;
+        max-width: calc(100vw - 190px) !important;
+        text-align: center !important;
+        font-size: 22px !important;
+        line-height: 1 !important;
+        font-weight: 800 !important;
+        letter-spacing: .01em !important;
+        color: var(--ink) !important;
+        white-space: nowrap !important;
+      }
+
+      .brand small { display: none !important; }
+      .menu-btn { grid-column: 3 !important; justify-self: end !important; width: 58px !important; height: 58px !important; font-size: 22px !important; }
+
+      .hero {
+        padding-top: 86px !important;
+        padding-bottom: 24px !important;
+      }
+
+      .hero-card {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: stretch !important;
+        text-align: center !important;
+        padding-top: 18px !important;
+        gap: 0 !important;
+      }
+
+      .hero-info { display: contents !important; }
+      .hero-card .eyebrow {
+        order: 1 !important;
+        margin-top: 0 !important;
+        margin-bottom: 16px !important;
+        transform: translateY(-8px) !important;
+      }
+      .hero-card h1 { display: none !important; }
+      .hero-card .hero-date {
+        order: 2 !important;
+        margin-top: 0 !important;
+        font-size: clamp(22px, 7.6vw, 31px) !important;
+        line-height: 1.18 !important;
+        color: var(--gold-dark) !important;
+      }
+      .hero-card .hero-place {
+        order: 3 !important;
+        margin-top: 14px !important;
+        font-size: clamp(20px, 6.7vw, 28px) !important;
+        line-height: 1.2 !important;
+        color: var(--muted) !important;
+      }
+      .hero-media {
+        order: 4 !important;
+        margin: 26px 0 28px !important;
+        min-height: 330px !important;
+        max-height: 480px !important;
+        width: 100% !important;
+        padding: 8px !important;
+        border-radius: 24px !important;
+      }
+      .hero-media img {
+        max-height: 460px !important;
+        object-fit: contain !important;
+        object-position: center center !important;
+      }
+      .hero-contacts {
+        order: 5 !important;
+        margin-top: 0 !important;
+        gap: 12px !important;
+        font-size: clamp(18px, 6.1vw, 27px) !important;
+        line-height: 1.25 !important;
+      }
+      .hero-card .actions {
+        order: 6 !important;
+        width: 100% !important;
+        margin-top: 28px !important;
+        gap: 16px !important;
+      }
+      .hero-card .actions .btn {
+        width: 100% !important;
+        min-height: 72px !important;
+        font-size: clamp(20px, 6vw, 27px) !important;
+      }
+      .hero-card .countdown,
+      .countdown {
+        order: 7 !important;
+        margin-top: 28px !important;
+      }
+
+      .nav {
+        inset: calc(env(safe-area-inset-top, 0px) + 94px) 14px auto 14px !important;
+        padding-top: 22px !important;
+        max-height: calc(100svh - 118px) !important;
+        overflow-y: auto !important;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .brand > span:not(.brand-mark) { font-size: 20px !important; max-width: calc(100vw - 176px) !important; }
+      .brand-mark { min-width: 76px !important; height: 50px !important; font-size: 21px !important; }
+      .menu-btn { width: 56px !important; height: 56px !important; }
+      .hero-media { min-height: 300px !important; }
+      .hero-card .hero-date { font-size: clamp(21px, 7.3vw, 29px) !important; }
+      .hero-card .hero-place { font-size: clamp(19px, 6.3vw, 26px) !important; }
+    }
+
   </style>
 </head>
 <body>
@@ -1258,11 +1409,11 @@
           </div>
           <article class="card">
             <p class="card-kicker">Datos bancarios</p>
-            <h3>Teresa e Ignacio</h3>
             <div class="copy-row">
               <code id="iban">ES35 1465 0130 0717 4819 3343</code>
               <button class="copy-btn" type="button" data-copy="ES35 1465 0130 0717 4819 3343">Copiar IBAN</button>
             </div>
+            <p class="gift-names">María Teresa Sicre Álvarez / Ignacio Flores Morales</p>
             <p>Gracias de corazón por acompañarnos y por formar parte de este día.</p>
           </article>
         </div>
@@ -1274,7 +1425,7 @@
             <p class="eyebrow">RSVP</p>
             <h2>Confirmar asistencia</h2>
             <div class="text-block">
-              <p>Por favor, confirmad vuestra asistencia antes del <strong>1 de septiembre de 2026</strong>.</p>
+              <p>Por favor, confirmad vuestra asistencia antes del <strong>15 de septiembre de 2026</strong>.</p>
               <p>También podéis indicarnos alergias, intolerancias, asistencia con niños o necesidad de servicio de autobús.</p>
             </div>
           </div>
