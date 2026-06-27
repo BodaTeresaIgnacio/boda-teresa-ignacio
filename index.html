@@ -1417,6 +1417,86 @@
       .hero-card .countdown-box span, .countdown-box span { font-size: 7.5px !important; }
     }
 
+
+
+    /* Corrección final solicitada: móvil sin franja superior y sin zoom automático en formularios iOS */
+    @media (max-width: 760px) {
+      body,
+      .site,
+      .topbar,
+      .hero,
+      .hero-card {
+        background: #ffffff !important;
+        background-image: none !important;
+      }
+
+      .topbar {
+        margin-bottom: 0 !important;
+        border-bottom: 0 !important;
+        box-shadow: none !important;
+      }
+
+      .hero {
+        padding-top: 0 !important;
+        margin-top: 0 !important;
+        background: #ffffff !important;
+      }
+
+      .hero-card {
+        padding-top: 4px !important;
+        margin-top: 0 !important;
+        background: #ffffff !important;
+        box-shadow: none !important;
+      }
+
+      .hero-card .eyebrow {
+        transform: none !important;
+        margin-top: 0 !important;
+        margin-bottom: 8px !important;
+      }
+
+      .hero-card .hero-date {
+        margin-top: 0 !important;
+      }
+
+      .hero-card .hero-place {
+        margin-top: 8px !important;
+      }
+
+      .hero-media {
+        margin-top: 18px !important;
+      }
+
+      .hero-card .countdown,
+      .countdown {
+        margin-bottom: 0 !important;
+      }
+
+      input,
+      select,
+      textarea,
+      button {
+        font-size: 16px !important;
+      }
+
+      label,
+      .field label {
+        font-size: 12px !important;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .hero-card { padding-top: 2px !important; }
+      .hero-card .eyebrow { margin-bottom: 7px !important; }
+      .hero-media { margin-top: 16px !important; }
+      input,
+      select,
+      textarea,
+      button {
+        font-size: 16px !important;
+      }
+    }
+
   </style>
 </head>
 <body>
