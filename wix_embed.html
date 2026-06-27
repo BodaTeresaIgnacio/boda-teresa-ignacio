@@ -1076,6 +1076,32 @@
       }
     }
 
+
+
+    /* Corrección final GitHub Pages: menú móvil completo y formulario por envío real */
+    .topbar { z-index: 9998 !important; }
+
+    @media (max-width: 920px) {
+      .nav {
+        position: fixed !important;
+        inset: max(82px, calc(env(safe-area-inset-top, 0px) + 78px)) 12px auto 12px !important;
+        max-height: calc(100svh - 104px) !important;
+        overflow-y: auto !important;
+        z-index: 9999 !important;
+        padding: 18px !important;
+        border-radius: 24px !important;
+        background: rgba(255,255,255,.98) !important;
+      }
+      body.nav-open .nav { display: flex !important; }
+    }
+
+    @media (max-width: 640px) {
+      .nav {
+        inset: max(76px, calc(env(safe-area-inset-top, 0px) + 72px)) 10px auto 10px !important;
+        max-height: calc(100svh - 92px) !important;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -1253,40 +1279,45 @@
             </div>
           </div>
 
-          <form id="rsvp-form">
+          <form id="rsvp-form" action="https://formsubmit.co/ignacio.flores@fisark.com" method="POST" accept-charset="UTF-8">
+            <input type="hidden" name="_subject" value="Confirmación boda Teresa e Ignacio">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" value="https://bodateresaignacio.github.io/boda-teresa-ignacio/#rsvp">
+            <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
             <div class="form-grid">
               <label>Nombre y apellidos
-                <input type="text" name="nombre" placeholder="Nombre y apellidos" required>
+                <input type="text" name="Nombre y apellidos" placeholder="Nombre y apellidos" required>
               </label>
               <label>Asistencia
-                <select name="asistencia" required>
+                <select name="Asistencia" required>
                   <option value="">Seleccionar</option>
                   <option>Sí, asistiré</option>
                   <option>No podré asistir</option>
                 </select>
               </label>
               <label>Acompañante
-                <select name="acompanante" required>
+                <select name="Acompañante" required>
                   <option value="">Seleccionar</option>
                   <option>Sí</option>
                   <option>No</option>
                 </select>
               </label>
               <label>Nombre y apellidos del acompañante
-                <input type="text" name="acompanante_nombre" placeholder="Indica el nombre si aplica">
+                <input type="text" name="Nombre y apellidos del acompañante" placeholder="Indica el nombre si aplica">
               </label>
               <label>Niños
-                <select name="ninos" required>
+                <select name="Niños" required>
                   <option value="">Seleccionar</option>
                   <option>Sí</option>
                   <option>No</option>
                 </select>
               </label>
               <label>Número de niños
-                <input type="number" name="ninos_numero" min="0" max="10" placeholder="0">
+                <input type="number" name="Número de niños" min="0" max="10" placeholder="0">
               </label>
               <label class="span-2">Servicio de autobús
-                <select name="autobus" required>
+                <select name="Servicio de autobús" required>
                   <option value="">Seleccionar</option>
                   <option>Sí. Ida y vuelta</option>
                   <option>Sí. Sólo ida</option>
@@ -1295,14 +1326,14 @@
                 </select>
               </label>
               <label class="span-2">Alergias o intolerancias
-                <input type="text" name="alergias" placeholder="Indica si aplica">
+                <input type="text" name="Alergias o intolerancias" placeholder="Indica si aplica">
               </label>
               <label class="span-2">Mensaje para los novios
-                <textarea name="mensaje" placeholder="Escribe aquí cualquier comentario que queráis hacernos"></textarea>
+                <textarea name="Mensaje para los novios" placeholder="Escribe aquí cualquier comentario que queráis hacernos"></textarea>
               </label>
             </div>
             <button class="btn primary full" type="submit">Enviar confirmación</button>
-            <p class="form-note">El botón abrirá un correo con vuestra confirmación preparada para enviar.</p>
+            <p class="form-note">Al enviar, la confirmación se remitirá directamente por correo a Ignacio.</p>
           </form>
         </div>
       </section>
@@ -1318,7 +1349,6 @@
 
   <script>
     const WEDDING_DATE = new Date('2026-10-03T13:00:00+02:00');
-    const RSVP_EMAIL = 'ignacio.flores@fisark.com';
 
     const pad = (value) => String(value).padStart(2, '0');
 
@@ -1394,40 +1424,10 @@
       });
     });
 
-    document.getElementById('rsvp-form').addEventListener('submit', (event) => {
-      event.preventDefault();
-      const form = new FormData(event.currentTarget);
-      const nombre = form.get('nombre') || '';
-      const asistencia = form.get('asistencia') || '';
-      const acompanante = form.get('acompanante') || '';
-      const acompananteNombre = form.get('acompanante_nombre') || '';
-      const ninos = form.get('ninos') || '';
-      const ninosNumero = form.get('ninos_numero') || '';
-      const autobus = form.get('autobus') || '';
-      const alergias = form.get('alergias') || '';
-      const mensaje = form.get('mensaje') || '';
 
-      const subject = `Confirmación boda Teresa e Ignacio - ${nombre}`;
-      const body = [
-        'Hola Teresa e Ignacio,',
-        '',
-        'Os confirmo mi respuesta para vuestra boda:',
-        '',
-        `Nombre y apellidos: ${nombre}`,
-        `Asistencia: ${asistencia}`,
-        `Acompañante: ${acompanante}`,
-        `Nombre y apellidos del acompañante: ${acompananteNombre || 'No indicado'}`,
-        `Niños: ${ninos}`,
-        `Número de niños: ${ninosNumero || '0'}`,
-        `Servicio de autobús: ${autobus}`,
-        `Alergias o intolerancias: ${alergias || 'No indicado'}`,
-        `Mensaje: ${mensaje || 'Sin mensaje'}`,
-        '',
-        'Un abrazo.'
-      ].join('\n');
-
-      window.location.href = `mailto:${RSVP_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    });
+    if (new URLSearchParams(window.location.search).has('confirmado')) {
+      showToast('Confirmación enviada');
+    }
   </script>
 </body>
 </html>
